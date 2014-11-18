@@ -17,6 +17,7 @@ namespace Hanoi.Tests
         {
             movimento = new Movimento();
         }
+
         //Eliminamos tres testes para atender todos em um único teste. Verificamos se:
         // o primeiro disco do pino foi removido;
         //se ele foi movido para pino de destino;
@@ -38,6 +39,16 @@ namespace Hanoi.Tests
             Assert.IsFalse(movimento.Pino1.Contains(2));
         }
 
+        [Test]
+        public void NenhumDiscoDeveFicarSobreUmDiscoMenor()
+        {
+            movimento.Mover(movimento.Pino1, movimento.Pino3);
+            movimento.Mover(movimento.Pino1, movimento.Pino2);
+            Assert.IsTrue(movimento.ComparaDiscos(movimento.Pino3, movimento.Pino2));
+        }
 
+        //O método Mover vai ser executado dependendo da resposta do método CompararDiscos
+
+        //Para finalizar precisa executar todos os movimentos e contar quantos movimentos foram executados
     }
 }
